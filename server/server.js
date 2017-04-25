@@ -7,11 +7,12 @@ const app = express();
 
 // STATIC FILES
 app.use('/public', express.static(path.join(__dirname, '../client')));
+app.use('/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap')));
 
 // SERVE INDEX PAGE
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
-})
+});
 
 // CATCH 404 ERRORS
 app.use((req, res, next) => {
@@ -21,7 +22,6 @@ app.use((req, res, next) => {
 });
 
 // LISTEN
-const port = process.env.port || 80;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}.`)
+app.listen(3537, () => {
+  console.log(`Server is listening on port 3537.`)
 });
